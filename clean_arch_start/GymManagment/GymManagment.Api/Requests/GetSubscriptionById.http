@@ -1,0 +1,6 @@
+﻿@host = http://localhost:5105
+@adminId =fee3c709-c104-4727-ac7a-c45aa38d21ea
+
+GET {{host}}/Subscriptions/{{adminId}}
+Content-Type: application/json
+
