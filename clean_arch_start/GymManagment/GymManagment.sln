@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagment.Api", "GymManagment.Api\GymManagment.Api.csproj", "{594DF7E4-62D5-4B17-AD08-153332DF2B07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagment.Application", "GymManagment.Application\GymManagment.Application.csproj", "{1A31FFDB-2DD1-46F3-9166-47350071C52F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagment.Domain", "GymManagment.Domain\GymManagment.Domain.csproj", "{6360F97F-D5C8-4267-BAF4-3527E84B01D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagment.Infrastructure", "GymManagment.Infrastructure\GymManagment.Infrastructure.csproj", "{B0957F9B-58E6-4752-BBD1-2F1B438E624D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +18,17 @@ Global
 		{594DF7E4-62D5-4B17-AD08-153332DF2B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{594DF7E4-62D5-4B17-AD08-153332DF2B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{594DF7E4-62D5-4B17-AD08-153332DF2B07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A31FFDB-2DD1-46F3-9166-47350071C52F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A31FFDB-2DD1-46F3-9166-47350071C52F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A31FFDB-2DD1-46F3-9166-47350071C52F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A31FFDB-2DD1-46F3-9166-47350071C52F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6360F97F-D5C8-4267-BAF4-3527E84B01D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6360F97F-D5C8-4267-BAF4-3527E84B01D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6360F97F-D5C8-4267-BAF4-3527E84B01D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6360F97F-D5C8-4267-BAF4-3527E84B01D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0957F9B-58E6-4752-BBD1-2F1B438E624D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0957F9B-58E6-4752-BBD1-2F1B438E624D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0957F9B-58E6-4752-BBD1-2F1B438E624D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0957F9B-58E6-4752-BBD1-2F1B438E624D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
