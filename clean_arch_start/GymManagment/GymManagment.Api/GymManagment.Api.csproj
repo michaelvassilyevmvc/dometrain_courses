@@ -24,4 +24,8 @@
       <ProjectReference Include="..\GymManagment.Infrastructure\GymManagment.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Requests\http-client.env.json" />
+    </ItemGroup>
+
 </Project>

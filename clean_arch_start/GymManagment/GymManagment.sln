@@ -10,6 +10,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagment.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagment.Contracts", "GymManagment.Contracts\GymManagment.Contracts.csproj", "{AC7BB164-A49A-40CD-8D59-5BD29008D3FE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requests", "Requests", "{EC1DF1E9-5A41-46EC-A209-B7A470C62066}"
+	ProjectSection(SolutionItems) = preProject
+		requests\Gyms\AddTrainer.http = requests\Gyms\AddTrainer.http
+		requests\Gyms\CreateGym.http = requests\Gyms\CreateGym.http
+		requests\Gyms\DeleteGym.http = requests\Gyms\DeleteGym.http
+		requests\Gyms\ListGyms.http = requests\Gyms\ListGyms.http
+		requests\Rooms\CreateRoom.http = requests\Rooms\CreateRoom.http
+		requests\Rooms\DeleteRoom.http = requests\Rooms\DeleteRoom.http
+		requests\Subscriptions\CreateSubscription.http = requests\Subscriptions\CreateSubscription.http
+		requests\Subscriptions\DeleteSubscription.http = requests\Subscriptions\DeleteSubscription.http
+		requests\Subscriptions\GetSubscription.http = requests\Subscriptions\GetSubscription.http
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -2,4 +2,4 @@
 
 public record SubscriptionResponse(
     Guid Id,
-    SubcriptionType SubcriptionType);   
+    SubscriptionType SubscriptionType);   

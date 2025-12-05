@@ -1,4 +1,5 @@
 ﻿using GymManagment.Application.Subscriptions.Commands.CreateSubscription;
+using GymManagment.Application.Subscriptions.Commands.DeleteSubscription;
 using GymManagment.Application.Subscriptions.Queries.GetSubscription;
 using GymManagment.Contracts.Subscriptions;
 using MediatR;
@@ -7,9 +8,8 @@ using DomainSubscriptionType = GymManagment.Domain.Subscriptions.SubscriptionTyp
 
 namespace GymManagment.Api.Controllers;
 
-[ApiController]
 [Route("[controller]")]
-public class SubscriptionsController : ControllerBase
+public class SubscriptionsController : ApiController
 {
     private readonly ISender _mediator;
 
@@ -18,30 +18,70 @@ public class SubscriptionsController : ControllerBase
         _mediator = mediator;
     }
 
+    [HttpPost]
+    public async Task<IActionResult> CreateSubscription(CreateSubscriptionRequest request)
+    {
+        // переводит enum из строки в enumtype
+        if (!DomainSubscriptionType.TryFromName(
+                request.SubscriptionType.ToString(),
+                out var subscriptionType))
+        {
+            return Problem(
+                statusCode: StatusCodes.Status400BadRequest,
+                detail: "Invalid subscription type");
+        }
+
+        var command = new CreateSubscriptionCommand(
+            subscriptionType,
+            request.AdminId);
+
+        var createSubscriptionResult = await _mediator.Send(command);
+
+        // Match -> испольуте 2 метода: если вернется значение или если вернется ошибка 
+        return createSubscriptionResult.Match(
+            subscription => CreatedAtAction(
+                nameof(GetSubscription),
+                new { subscriptionId = subscription.Id },
+                new SubscriptionResponse(
+                    subscription.Id,
+                    ToDto(subscription.SubscriptionType))),
+            Problem);
+    }
+
     [HttpGet("{subscriptionId:guid}")]
     public async Task<IActionResult> GetSubscription(Guid subscriptionId)
     {
         var query = new GetSubscriptionQuery(subscriptionId);
-        var getSubscriptionResult = await _mediator.Send(query);
-        return getSubscriptionResult.MatchFirst(
-            subscription =>
-                Ok(new SubscriptionResponse(subscription.Id,
-                    Enum.Parse<SubcriptionType>(subscription.SubscriptionType.Name))),
-            error => Problem());
+
+        var getSubscriptionsResult = await _mediator.Send(query);
+
+        return getSubscriptionsResult.Match(
+            subscription => Ok(new SubscriptionResponse(
+                subscription.Id,
+                ToDto(subscription.SubscriptionType))),
+            Problem);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> CreateSubscription(CreateSubscriptionRequest request)
+    [HttpDelete("{subscriptionId:guid}")]
+    public async Task<IActionResult> DeleteSubscription(Guid subscriptionId)
     {
-        if (!DomainSubscriptionType.TryFromName(request.SubcriptionType.ToString(), out var subscriptionType))
-        {
-            return Problem(statusCode: StatusCodes.Status400BadRequest, detail: "Invalid Subscription Type");
-        }
-        var command = new CreateSubscriptionCommand(subscriptionType, request.AdminId);
+        var command = new DeleteSubscriptionCommand(subscriptionId);
+
         var createSubscriptionResult = await _mediator.Send(command);
 
-        return createSubscriptionResult.MatchFirst(
-            subscription => Ok(new SubscriptionResponse(subscription.Id, request.SubcriptionType)),
-            error => Problem());
+        return createSubscriptionResult.Match(
+            _ => NoContent(),
+            Problem);
+    }
+    
+    private static SubscriptionType ToDto(DomainSubscriptionType subscriptionType)
+    {
+        return subscriptionType.Name switch
+        {
+            nameof(DomainSubscriptionType.Free) => SubscriptionType.Free,
+            nameof(DomainSubscriptionType.Starter) => SubscriptionType.Starter,
+            nameof(DomainSubscriptionType.Pro) => SubscriptionType.Pro,
+            _ => throw new InvalidOperationException(),
+        };
     }
 }
