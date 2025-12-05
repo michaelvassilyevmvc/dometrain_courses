@@ -10,4 +10,8 @@
       <ProjectReference Include="..\GymManagment.Domain\GymManagment.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Gyms\" />
+    </ItemGroup>
+
 </Project>
