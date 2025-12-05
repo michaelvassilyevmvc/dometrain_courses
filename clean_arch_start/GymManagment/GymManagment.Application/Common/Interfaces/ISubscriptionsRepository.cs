@@ -8,6 +8,7 @@ public interface ISubscriptionsRepository
     Task<bool> ExistAsync(Guid id);
     Task<Subscription?> GetByAdminIdAsync(Guid adminId);
     Task<Subscription?> GetByIdAsync(Guid id);
+    Task<List<Subscription>> ListAsync();
     Task RemoveSubscriptionAsync(Subscription subscription);
     Task UpdateAsync(Subscription subscription);
 }
