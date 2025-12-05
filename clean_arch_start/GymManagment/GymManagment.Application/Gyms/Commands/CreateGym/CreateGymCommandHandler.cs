@@ -19,15 +19,24 @@ public class CreateGymCommandHandler : IRequestHandler<CreateGymCommand, ErrorOr
         _subscriptionsRepository = subscriptionsRepository;
     }
 
-    public async Task<ErrorOr<Gym>> Handle(CreateGymCommand request, CancellationToken cancellationToken)
+    public async Task<ErrorOr<Gym>> Handle(CreateGymCommand command, CancellationToken cancellationToken)
     {
-        var subscription = await _subscriptionsRepository.GetByIdAsync(request.SubscriptionId);
+        var validator = new CreateGymCommandValidator();
+        var validationResult = await validator.ValidateAsync(command, cancellationToken);
+        if (!validationResult.IsValid)
+        {
+            return validationResult.Errors.Select(error =>
+                    Error.Validation(code: error.PropertyName, description: error.ErrorMessage))
+                .ToList();
+        }
+
+        var subscription = await _subscriptionsRepository.GetByIdAsync(command.SubscriptionId);
         if (subscription is null)
         {
             return Error.NotFound(description: "Subscription not found");
         }
 
-        var gym = new Gym(name: request.Name, maxRooms: subscription.GetMaxRooms(), subscriptionId: subscription.Id);
+        var gym = new Gym(name: command.Name, maxRooms: subscription.GetMaxRooms(), subscriptionId: subscription.Id);
         var addGymResult = subscription.AddGym(gym);
         if (addGymResult.IsError)
         {
