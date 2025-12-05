@@ -4,7 +4,7 @@ using MediatR;
 
 namespace GymManagment.Application.Subscriptions.Events;
 
-public class SubscriptionDeletedEventHandler: INotificationHandler<SubscriptionDeletedEvent>
+public class SubscriptionDeletedEventHandler : INotificationHandler<SubscriptionDeletedEvent>
 {
     private readonly ISubscriptionsRepository _subscriptionsRepository;
     private readonly IUnitOfWork _unitOfWork;
@@ -19,8 +19,11 @@ public class SubscriptionDeletedEventHandler: INotificationHandler<SubscriptionD
         SubscriptionDeletedEvent notification,
         CancellationToken cancellationToken)
     {
-        var subscription = await _subscriptionsRepository.GetByIdAsync(notification.SubscriptionId)
-        ?? throw new InvalidOperationException("Subscription not found");
+        var subscription = await _subscriptionsRepository.GetByIdAsync(notification.SubscriptionId);
+        if (subscription is null)
+        {
+            throw new InvalidOperationException("Subscription not found");
+        }
 
         await _subscriptionsRepository.RemoveSubscriptionAsync(subscription);
         await _unitOfWork.CommitChangesAsync();
