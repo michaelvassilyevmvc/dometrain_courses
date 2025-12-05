@@ -37,11 +37,8 @@ public class DeleteSubscriptionCommandHandler : IRequestHandler<DeleteSubscripti
         }
 
         admin.DeleteSubscription(command.SubscriptionId);
-        // var gymsToDelete = await _gymsRepository.ListBySubscriptionIdAsync(command.SubscriptionId);
 
         await _adminsRepository.UpdateAsync(admin);
-        // await _subscriptionsRepository.RemoveSubscriptionAsync(subscription);
-        // await _gymsRepository.RemoveRangeAsync(gyms: gymsToDelete);
         await _unitOfWork.CommitChangesAsync();
 
         return Result.Deleted;
