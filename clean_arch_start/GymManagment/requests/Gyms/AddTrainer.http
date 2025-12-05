@@ -1,0 +1,11 @@
+@host=http://localhost:5209
+@subscriptionId=163C48FD-CC05-4BA8-BA58-397916D87D05
+@gymId=4F15F34F-9322-45FC-B7FA-85409E51EF4B
+@trainerId=aef93292-ecdf-4304-897d-346464a4bbe3
+
+POST {{host}}/subscriptions/{{subscriptionId}}/gyms/{{gymId}}/trainers
+Content-Type: application/json
+
+{
+    "trainerId": "{{trainerId}}"
+}
