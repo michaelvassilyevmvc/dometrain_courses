@@ -5,5 +5,9 @@ namespace GymManagment.Application.Common.Interfaces;
 public interface ISubscriptionsRepository
 {
     Task AdbSubscriptionAsync(Subscription subscription);
+    Task<bool> ExistAsync(Guid id);
+    Task<Subscription?> GetByAdminIdAsync(Guid adminId);
     Task<Subscription?> GetByIdAsync(Guid id);
+    Task RemoveSubscriptionAsync(Subscription subscription);
+    Task UpdateAsync(Subscription subscription);
 }
