@@ -10,19 +10,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagment.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagment.Contracts", "GymManagment.Contracts\GymManagment.Contracts.csproj", "{AC7BB164-A49A-40CD-8D59-5BD29008D3FE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requests", "Requests", "{EC1DF1E9-5A41-46EC-A209-B7A470C62066}"
-	ProjectSection(SolutionItems) = preProject
-		requests\Gyms\AddTrainer.http = requests\Gyms\AddTrainer.http
-		requests\Gyms\CreateGym.http = requests\Gyms\CreateGym.http
-		requests\Gyms\DeleteGym.http = requests\Gyms\DeleteGym.http
-		requests\Gyms\ListGyms.http = requests\Gyms\ListGyms.http
-		requests\Rooms\CreateRoom.http = requests\Rooms\CreateRoom.http
-		requests\Rooms\DeleteRoom.http = requests\Rooms\DeleteRoom.http
-		requests\Subscriptions\CreateSubscription.http = requests\Subscriptions\CreateSubscription.http
-		requests\Subscriptions\DeleteSubscription.http = requests\Subscriptions\DeleteSubscription.http
-		requests\Subscriptions\GetSubscription.http = requests\Subscriptions\GetSubscription.http
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{80E5F797-CB3D-4F64-A8E8-63B3282623E0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCommon", "tests\TestCommon\TestCommon.csproj", "{8FF11D5E-BB35-4E59-881E-C8B8523EC072}"
@@ -34,6 +21,23 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagment.Application.SubcutaneousTests", "tests\GymManagment.Application.SubcutaneousTests\GymManagment.Application.SubcutaneousTests.csproj", "{C860F089-4FB7-46A7-A752-C9C271189330}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagement.Api.IntegrationTests", "tests\GymManagement.Api.IntegrationTests\GymManagement.Api.IntegrationTests.csproj", "{A6F964C1-7E7A-4C4E-9C8C-9AC43DFFC323}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "regusts", "regusts", "{851EAB5D-42E6-448B-BEC1-57EB2188AFAC}"
+	ProjectSection(SolutionItems) = preProject
+		requests\Authentication\Login.http = requests\Authentication\Login.http
+		requests\Authentication\Register.http = requests\Authentication\Register.http
+		requests\Gyms\AddTrainer.http = requests\Gyms\AddTrainer.http
+		requests\Gyms\CreateGym.http = requests\Gyms\CreateGym.http
+		requests\Gyms\DeleteGym.http = requests\Gyms\DeleteGym.http
+		requests\Gyms\ListGyms.http = requests\Gyms\ListGyms.http
+		requests\Profiles\CreateProfile.http = requests\Profiles\CreateProfile.http
+		requests\Profiles\ListProfiles.http = requests\Profiles\ListProfiles.http
+		requests\Rooms\CreateRoom.http = requests\Rooms\CreateRoom.http
+		requests\Rooms\DeleteRoom.http = requests\Rooms\DeleteRoom.http
+		requests\Subscriptions\CreateSubscription.http = requests\Subscriptions\CreateSubscription.http
+		requests\Subscriptions\DeleteSubscription.http = requests\Subscriptions\DeleteSubscription.http
+		requests\Subscriptions\GetSubscription.http = requests\Subscriptions\GetSubscription.http
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
