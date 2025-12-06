@@ -2,7 +2,7 @@
 
 namespace TestCommon.TestContants;
 
-public static partial class Contants
+public static partial class Constants
 {
     public static class Subscriptions
     {

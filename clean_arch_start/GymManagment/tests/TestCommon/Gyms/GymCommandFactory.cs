@@ -6,9 +6,9 @@ namespace TestCommon.Gyms;
 public static class GymCommandFactory
 {
     public static CreateGymCommand CreateGymCommand(
-        string name = Contants.Gym.Name,
+        string name = Constants.Gym.Name,
         Guid? subscriptionId = null)
     {
-        return new CreateGymCommand(name, subscriptionId ?? Contants.Subscriptions.Id);
+        return new CreateGymCommand(name, subscriptionId ?? Constants.Subscriptions.Id);
     }
 }

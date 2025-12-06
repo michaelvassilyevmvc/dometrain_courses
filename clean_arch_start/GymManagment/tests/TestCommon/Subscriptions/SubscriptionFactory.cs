@@ -11,9 +11,9 @@ public static class SubscriptionFactory
         Guid? id = null)
     {
         return new Subscription(
-            subscriptionType: subscriptionType ?? Contants.Subscriptions.DefaultSubscriptionType,
-            adminId: adminId ?? Contants.Admin.Id,
-            id: id ?? Contants.Subscriptions.Id
+            subscriptionType: subscriptionType ?? Constants.Subscriptions.DefaultSubscriptionType,
+            adminId: adminId ?? Constants.Admin.Id,
+            id: id ?? Constants.Subscriptions.Id
         );
     }
 }

@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagment.Domain.UnitTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagment.Application.UnitTests", "tests\GymManagment.Application.UnitTests\GymManagment.Application.UnitTests.csproj", "{0C6EDF34-E1C2-44EB-8793-EA13B3802C14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagment.Application.SubcutaneousTests", "tests\GymManagment.Application.SubcutaneousTests\GymManagment.Application.SubcutaneousTests.csproj", "{C860F089-4FB7-46A7-A752-C9C271189330}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymManagement.Api.IntegrationTests", "tests\GymManagement.Api.IntegrationTests\GymManagement.Api.IntegrationTests.csproj", "{A6F964C1-7E7A-4C4E-9C8C-9AC43DFFC323}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,10 +73,20 @@ Global
 		{0C6EDF34-E1C2-44EB-8793-EA13B3802C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C6EDF34-E1C2-44EB-8793-EA13B3802C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C6EDF34-E1C2-44EB-8793-EA13B3802C14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C860F089-4FB7-46A7-A752-C9C271189330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C860F089-4FB7-46A7-A752-C9C271189330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C860F089-4FB7-46A7-A752-C9C271189330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C860F089-4FB7-46A7-A752-C9C271189330}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6F964C1-7E7A-4C4E-9C8C-9AC43DFFC323}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6F964C1-7E7A-4C4E-9C8C-9AC43DFFC323}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6F964C1-7E7A-4C4E-9C8C-9AC43DFFC323}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6F964C1-7E7A-4C4E-9C8C-9AC43DFFC323}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8FF11D5E-BB35-4E59-881E-C8B8523EC072} = {80E5F797-CB3D-4F64-A8E8-63B3282623E0}
 		{4201558F-C696-4297-9E9D-4340C69F2313} = {80E5F797-CB3D-4F64-A8E8-63B3282623E0}
 		{0C6EDF34-E1C2-44EB-8793-EA13B3802C14} = {80E5F797-CB3D-4F64-A8E8-63B3282623E0}
+		{C860F089-4FB7-46A7-A752-C9C271189330} = {80E5F797-CB3D-4F64-A8E8-63B3282623E0}
+		{A6F964C1-7E7A-4C4E-9C8C-9AC43DFFC323} = {80E5F797-CB3D-4F64-A8E8-63B3282623E0}
 	EndGlobalSection
 EndGlobal
