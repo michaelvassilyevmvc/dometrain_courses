@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\GymManagment.Application\GymManagment.Application.csproj" />
       <ProjectReference Include="..\..\GymManagment.Domain\GymManagment.Domain.csproj" />
     </ItemGroup>
 
