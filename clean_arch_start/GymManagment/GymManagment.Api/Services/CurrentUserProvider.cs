@@ -1,4 +1,5 @@
-﻿using GymManagment.Application.Common.Interfaces;
+﻿using System.Security.Claims;
+using GymManagment.Application.Common.Interfaces;
 using GymManagment.Application.Common.Models;
 using Throw;
 
@@ -10,7 +11,22 @@ public class CurrentUserProvider(IHttpContextAccessor _httpContextAccessor)
     public CurrentUser GetCurrentUser()
     {
         _httpContextAccessor.HttpContext.ThrowIfNull();
-        var claim = _httpContextAccessor.HttpContext.User.Claims.First(claim => claim.Type == "id");
-        return new CurrentUser(Guid.Parse(claim.Value));
+
+        var id = GetClaimValues("id")
+            .Select(Guid.Parse)
+            .First();
+
+        var permissions = GetClaimValues("permissions");
+        var roles = GetClaimValues(ClaimTypes.Role);
+
+        return new CurrentUser(Id: id, Permissions: permissions, Roles: roles);
+    }
+
+    private IReadOnlyList<string> GetClaimValues(string claimType)
+    {
+        return _httpContextAccessor.HttpContext!.User.Claims
+            .Where(claim => claim.Type == claimType)
+            .Select(claim => claim.Value)
+            .ToList();
     }
 }
