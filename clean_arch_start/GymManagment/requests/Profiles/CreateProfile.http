@@ -1,8 +1,10 @@
 @host=http://localhost:5209
-@userId=b6a6c42c-4f43-4933-b8aa-916a34c48c87
+@userId=912C108C-0F04-4EAA-A43C-536403AEB072
+@token=
 
 ### Admin
 POST {{host}}/users/{{userId}}/profiles/admin
+Authorization: Bearer {{token}}
 
 ### Trainer
 POST {{host}}/users/{{userId}}/profiles/trainer

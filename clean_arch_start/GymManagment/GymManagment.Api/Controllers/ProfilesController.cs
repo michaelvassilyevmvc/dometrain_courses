@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GymManagment.Api.Controllers;
 
-[Microsoft.AspNetCore.Components.Route("users/{userId:guid}/profiles")]
+[Route("users/{userId:guid}/profiles")]
 public class ProfilesController(ISender _mediator): ApiController
 {
     [HttpPost("admin")]

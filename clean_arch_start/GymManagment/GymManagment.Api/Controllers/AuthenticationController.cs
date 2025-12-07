@@ -9,7 +9,7 @@ using MediatR;
 
 namespace GymManagment.Api.Controllers;
 
-[Microsoft.AspNetCore.Components.Route("[controller]")]
+[Route("[controller]")]
 [AllowAnonymous]
 public class AuthenticationController(ISender _mediator) : ApiController
 {

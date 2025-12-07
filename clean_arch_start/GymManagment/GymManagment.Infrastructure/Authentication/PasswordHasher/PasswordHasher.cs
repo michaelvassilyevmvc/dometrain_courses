@@ -17,7 +17,7 @@ public partial class PasswordHasher: IPasswordHasher
 
     public bool IsCorrectPassword(string password, string hash)
     {
-        throw new NotImplementedException();
+        return BCrypt.Net.BCrypt.EnhancedVerify(password, hash);
     }
     
     [GeneratedRegex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", RegexOptions.Compiled)]

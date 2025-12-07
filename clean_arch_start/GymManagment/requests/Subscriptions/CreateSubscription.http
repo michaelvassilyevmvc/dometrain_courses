@@ -1,5 +1,5 @@
 @host=http://localhost:5209
-@adminId=78da91d2-891f-4eb4-ae29-5820b76c5203
+@adminId=5A35959C-F45C-4CA3-AC4A-DD7AB7EE9CBB
 
 POST {{host}}/Subscriptions
 Content-Type: application/json
@@ -8,8 +8,3 @@ Content-Type: application/json
     "SubscriptionType": "Starter",
     "AdminId": "{{adminId}}"
 }
-
-# {
-#     "Id": "{{adminId}}"
-#     "SubscriptionType": "Free", // "Starter", "Pro"
-# }
