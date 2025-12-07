@@ -1,6 +1,6 @@
 @host=http://localhost:5209
-@userId=912C108C-0F04-4EAA-A43C-536403AEB072
-@token=
+@userId=4807A7B0-6320-487E-8331-65144785A2A4
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQW1pY2hhaSIsImZhbWlseV9uYW1lIjoiTWFudGluYmFuZCIsImVtYWlsIjoiYW1pY2hhaUBtYW50aW5iYW5kLmNvbSIsImlkIjoiNDgwN2E3YjAtNjMyMC00ODdlLTgzMzEtNjUxNDQ3ODVhMmE0IiwicGVybWlzc2lvbnMiOlsiZ3ltczpjcmVhdGUiLCJneW1zOnVwZGF0ZSJdLCJleHAiOjE3NjUxMTkxNjgsImlzcyI6Ikd5bU1hbmFnZW1lbnQiLCJhdWQiOiJHeW1NYW5hZ2VtZW50In0.LCMxaajiXt8SVlHyh0-XR3mdDQNHhubS0DyZ-Talnps
 
 ### Admin
 POST {{host}}/users/{{userId}}/profiles/admin
