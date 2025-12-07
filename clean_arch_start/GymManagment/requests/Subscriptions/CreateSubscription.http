@@ -1,14 +1,10 @@
 @host=http://localhost:5209
-@adminId=2150e333-8fdc-42a3-9474-1a3956d46de8
+@adminId=5A35959C-F45C-4CA3-AC4A-DD7AB7EE9CBB
 
 POST {{host}}/Subscriptions
 Content-Type: application/json
 
 {
-    "SubscriptionType": "Free",
+    "SubscriptionType": "Starter",
     "AdminId": "{{adminId}}"
 }
-
-
-
- 
