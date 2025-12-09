@@ -8,6 +8,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7905885C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomeGym.Domain.UnitTests", "tests\DomeGym.Domain.UnitTests\DomeGym.Domain.UnitTests.csproj", "{962D1633-84FF-4B74-A9D4-E3D939D06A6A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{EAE9A3A7-1A32-4CE5-B79E-2FCEF1E1264E}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Invariants.rus.md = docs\Invariants.rus.md
+		docs\Invariants.eng.md = docs\Invariants.eng.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
