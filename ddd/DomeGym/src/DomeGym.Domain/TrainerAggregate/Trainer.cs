@@ -1,6 +1,8 @@
-﻿using ErrorOr;
+﻿using DomeGym.Domain.Common.Entities;
+using DomeGym.Domain.SessionAggregate;
+using ErrorOr;
 
-namespace DomeGym.Domain;
+namespace DomeGym.Domain.TrainerAggregate;
 
 public class Trainer
 {

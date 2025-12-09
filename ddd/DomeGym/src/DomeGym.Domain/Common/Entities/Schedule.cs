@@ -1,18 +1,17 @@
-﻿using ErrorOr;
+﻿using DomeGym.Domain.Common.ValueObjects;
+using ErrorOr;
 
-namespace DomeGym.Domain;
+namespace DomeGym.Domain.Common.Entities;
 
-public class Schedule
+public class Schedule: Entity
 {
     private readonly Dictionary<DateOnly, List<TimeRange>> _calendar = new();
-    private readonly Guid _id;
 
     public Schedule(
         Dictionary<DateOnly, List<TimeRange>>? calendar = null,
         Guid? id = null
-    )
+    ): base(id ?? Guid.NewGuid())
     {
-        _id = id ?? Guid.NewGuid();
         _calendar = calendar ?? new();
     }
 
@@ -63,7 +62,5 @@ public class Schedule
         return Result.Success;
     }
 
-    private Schedule()
-    {
-    }
+    
 }

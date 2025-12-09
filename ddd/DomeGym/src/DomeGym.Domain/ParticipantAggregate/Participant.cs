@@ -1,20 +1,21 @@
-﻿using ErrorOr;
+﻿using DomeGym.Domain.Common;
+using DomeGym.Domain.Common.Entities;
+using DomeGym.Domain.SessionAggregate;
+using ErrorOr;
 
-namespace DomeGym.Domain;
+namespace DomeGym.Domain.ParticipantAggregate;
 
-public class Participant
+public class Participant: AggregateRoot
 {
     private readonly Schedule _schedule = Schedule.Empty();
 
-    public Guid Id { get; }
 
     private readonly Guid _userId;
     private readonly List<Guid> _sessionId = new();
 
-    public Participant(Guid userId, Guid? id = null)
+    public Participant(Guid userId, Guid? id = null): base(id ?? Guid.NewGuid())
     {
         _userId = userId;
-        Id = id ?? Guid.NewGuid();
     }
 
     public ErrorOr<Success> AddToSchedule(Session session)

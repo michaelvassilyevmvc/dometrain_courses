@@ -1,4 +1,5 @@
-﻿using FluentAssertions.Primitives;
+﻿using DomeGym.Domain.Common.ValueObjects;
+using FluentAssertions.Primitives;
 
 namespace DomeGym.Domain.UnitTests.TestConstants;
 

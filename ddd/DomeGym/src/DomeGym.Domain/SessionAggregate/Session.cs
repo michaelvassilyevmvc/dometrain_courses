@@ -1,6 +1,9 @@
-﻿using ErrorOr;
+﻿using DomeGym.Domain.Common.Interfaces;
+using DomeGym.Domain.Common.ValueObjects;
+using DomeGym.Domain.ParticipantAggregate;
+using ErrorOr;
 
-namespace DomeGym.Domain;
+namespace DomeGym.Domain.SessionAggregate;
 
 public class Session
 {

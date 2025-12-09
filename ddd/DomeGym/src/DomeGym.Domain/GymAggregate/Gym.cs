@@ -1,23 +1,24 @@
-﻿namespace DomeGym.Domain;
+﻿using DomeGym.Domain.Common;
+using DomeGym.Domain.RoomAggregate;
 using ErrorOr;
 
-public class Gym
+namespace DomeGym.Domain.GymAggregate;
+
+public class Gym: AggregateRoot
 {
     private readonly Guid _subscriptionId;
     private readonly int _maxRooms;
     private readonly List<Guid> _roomIds = new();
     
-    public Guid Id { get; }
 
     public Gym(
         int maxRooms,
         Guid subscriptionId,
         Guid? id = null
-    )
+    ): base(id ?? Guid.NewGuid())
     {
         _maxRooms = maxRooms;
         _subscriptionId = subscriptionId;
-        Id = id ?? Guid.NewGuid();
     }
     
     public ErrorOr<Success> AddRoom(Room room)
@@ -29,7 +30,7 @@ public class Gym
         }
         
         // CanTest: на возможность добавить больше залов чем разрешено по подписке
-        if (_roomIds.Count + 1 > _maxRooms)
+        if (_roomIds.Count >= _maxRooms)
         {
             return GymErrors.CannotHaveMoreRoomsThanSubscriptionAllows;
         }

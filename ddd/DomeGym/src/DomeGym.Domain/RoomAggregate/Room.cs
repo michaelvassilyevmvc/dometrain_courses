@@ -1,26 +1,27 @@
-﻿using ErrorOr;
-namespace DomeGym.Domain;
+﻿using DomeGym.Domain.Common;
+using DomeGym.Domain.Common.Entities;
+using DomeGym.Domain.SessionAggregate;
+using ErrorOr;
 
-public class Room
+namespace DomeGym.Domain.RoomAggregate;
+
+public class Room: AggregateRoot
 {
     private readonly List<Guid> _sessionIds = new();
     private readonly int _maxDailySessions;
     private readonly Guid _gymId;
     public readonly  Schedule _schedule  = Schedule.Empty();
     
-    public Guid Id { get; }
-
     public Room(
         int maxDailySessions,
         Guid gymId,
         Schedule? schedule = null,
         Guid? id = null
-    )
+    ): base(id ?? Guid.NewGuid())
     {
         _maxDailySessions = maxDailySessions;
         _gymId = gymId;
         _schedule = schedule ?? Schedule.Empty();
-        Id = id ?? Guid.NewGuid();
     }
 
     public ErrorOr<Success> ScheduleSession(Session session)
@@ -30,7 +31,7 @@ public class Room
             return Error.Conflict("Session already exists in room");
         }
 
-        if (_sessionIds.Count+1 > _maxDailySessions)
+        if (_sessionIds.Count >= _maxDailySessions)
         {
             return RoomErrors.CannotHaveMoreSessionThanSubscriptionAllows;
         }
