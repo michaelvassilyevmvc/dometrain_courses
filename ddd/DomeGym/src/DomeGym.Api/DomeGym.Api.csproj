@@ -20,10 +20,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\DomeGym.Application\DomeGym.Application.csproj" />
       <ProjectReference Include="..\DomeGym.Contracts\DomeGym.Contracts.csproj" />
       <ProjectReference Include="..\DomeGym.Domain\DomeGym.Domain.csproj" />
