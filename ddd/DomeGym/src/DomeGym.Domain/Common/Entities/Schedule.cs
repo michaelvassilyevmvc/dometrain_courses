@@ -62,5 +62,9 @@ public class Schedule: Entity
         return Result.Success;
     }
 
-    
+    private Schedule()
+    {
+    }
+
+
 }
