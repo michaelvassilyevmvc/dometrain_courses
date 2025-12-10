@@ -7,9 +7,9 @@ namespace DomeGym.Domain.SubscriptionAggregate;
 public class Subscription: AggregateRoot
 {
     private readonly List<Guid> _gymIds = new();
-    private readonly SubscriptionType _subscriptionType;
     private readonly int _maxGyms;
     private readonly Guid _adminId;
+    private SubscriptionType SubscriptionType { get; } = default!;
 
     public Subscription(
         SubscriptionType subscriptionType,
@@ -17,13 +17,13 @@ public class Subscription: AggregateRoot
         Guid? id = null
     ): base(id ?? Guid.NewGuid())
     {
-        _subscriptionType = subscriptionType;
-        _adminId = adminId;
+        SubscriptionType = subscriptionType;
         _maxGyms = GetMaxGyms();
+        _adminId = adminId;
     }
 
     public int GetMaxGyms()
-        => _subscriptionType.Name switch
+        => SubscriptionType.Name switch
         {
             nameof(SubscriptionType.Free) => 1,
             nameof(SubscriptionType.Starter) => 1,
@@ -31,14 +31,14 @@ public class Subscription: AggregateRoot
             _ => throw new InvalidOperationException()
         };
 
-    private int GetMaxRooms() => _subscriptionType.Name switch
+    private int GetMaxRooms() => SubscriptionType.Name switch
     {
         nameof(SubscriptionType.Free) => 1,
-        nameof(SubscriptionType.Starter) => 3,
+        nameof(SubscriptionType.Starter) => 1,
         nameof(SubscriptionType.Pro) => int.MaxValue,
         _ => throw new InvalidOperationException()
     };
-    private int GetMaxDailySessions() => _subscriptionType.Name switch
+    private int GetMaxDailySessions() => SubscriptionType.Name switch
     {
         nameof(SubscriptionType.Free) => 4,
         nameof(SubscriptionType.Starter) => int.MaxValue,
@@ -60,5 +60,11 @@ public class Subscription: AggregateRoot
         
         _gymIds.Add(gym.Id);
         return Result.Success;
+    }
+    
+    public bool HasGym(Guid gymId) => _gymIds.Contains(gymId);
+
+    private Subscription()
+    {
     }
 }

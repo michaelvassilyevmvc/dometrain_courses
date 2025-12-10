@@ -1,19 +1,40 @@
-﻿using DomeGym.Domain.Common;
+﻿using DomeGym.Domain.AdminAggregate.Events;
+using DomeGym.Domain.Common;
+using DomeGym.Domain.SubscriptionAggregate;
+using ErrorOr;
 
 namespace DomeGym.Domain.AdminAggregate;
 
 public class Admin : AggregateRoot
 {
-    private readonly Guid _userId;
-    private readonly Guid _subscriptionId;
-
+    private Guid UserId { get; }
+    public Guid? SubscriptionId { get; private set; }
+    
     public Admin(
         Guid userId,
-        Guid subscriptionId,
+        Guid? subscriptionId = null,
         Guid? id = null
     ) : base(id ?? Guid.NewGuid())
     {
-        _userId = userId;
-        _subscriptionId = subscriptionId;
+        UserId = userId;
+        SubscriptionId = subscriptionId;
+    }
+
+    public ErrorOr<Success> SetSubscription(Subscription subscription)
+    {
+        if(SubscriptionId.HasValue)
+        {
+            return Error.Conflict(description: "Admin already has an active subscription");
+        }
+        
+        SubscriptionId = subscription.Id;
+        
+         _domainEvents.Add(item: new SubscriptionSetEvent(Admin: this, Subscription: subscription));
+
+        return Result.Success;
+    }
+
+    private Admin()
+    {
     }
 }

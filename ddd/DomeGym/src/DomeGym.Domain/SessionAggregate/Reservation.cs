@@ -1,6 +1,6 @@
 ﻿using DomeGym.Domain.Common;
 
-namespace DomeGym.Domain.RoomAggregate;
+namespace DomeGym.Domain.SessionAggregate;
 
 public class Reservation: Entity
 {
@@ -11,4 +11,6 @@ public class Reservation: Entity
     {
         ParticipantId = participantId;
     }
+    
+    private Reservation() { }
 }
