@@ -12,7 +12,7 @@ public class Gym : AggregateRoot
     private readonly List<Guid> _trainerIds = new();
     public string Name { get; } = null!;
     public IReadOnlyList<Guid> RoomIds => _roomIds;
-    private Guid SubscriptionId { get; }
+    public Guid SubscriptionId { get; }
 
 
     public Gym(

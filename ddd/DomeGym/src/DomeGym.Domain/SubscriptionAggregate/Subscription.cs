@@ -31,14 +31,14 @@ public class Subscription: AggregateRoot
             _ => throw new InvalidOperationException()
         };
 
-    private int GetMaxRooms() => SubscriptionType.Name switch
+    public int GetMaxRooms() => SubscriptionType.Name switch
     {
         nameof(SubscriptionType.Free) => 1,
         nameof(SubscriptionType.Starter) => 1,
         nameof(SubscriptionType.Pro) => int.MaxValue,
         _ => throw new InvalidOperationException()
     };
-    private int GetMaxDailySessions() => SubscriptionType.Name switch
+    public int GetMaxDailySessions() => SubscriptionType.Name switch
     {
         nameof(SubscriptionType.Free) => 4,
         nameof(SubscriptionType.Starter) => int.MaxValue,

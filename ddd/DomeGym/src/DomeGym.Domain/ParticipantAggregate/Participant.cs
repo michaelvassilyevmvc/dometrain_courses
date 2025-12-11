@@ -44,6 +44,11 @@ public class Participant : AggregateRoot
         _sessionId.Add(item: session.Id);
         return Result.Success;
     }
+    
+    public bool HasReservationForSession(Guid sessionId)
+    {
+        return _sessionId.Contains(sessionId);
+    }
 
     public ErrorOr<Success> RemoveFromSchedule(Session session)
     {
