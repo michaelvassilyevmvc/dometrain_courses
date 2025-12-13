@@ -7,16 +7,26 @@ namespace DomeGym.Domain.UnitTests.TestUtils.Sessions;
 public static class SessionFactory
 {
     public static Session CreateSession(
+        string name = Constants.Session.Name,
+        string description = Constants.Session.Description,
+        Guid? roomId = null,
+        Guid? trainerId = null,
+        int maxParticipants = Constants.Session.MaxParticipants,
         DateOnly? date = null,
         TimeRange? time = null,
-        int maxParticipants = Constants.Session.MaxParticipants,
+        List<SessionCategory>? categories = null,
         Guid? id = null)
     {
         return new Session(
-            date ?? Constants.Session.Date,
-            time ?? Constants.Session.Time,
-            maxParticipants,
-            trainerId: Constants.Trainer.Id,
-            id: id ?? Constants.Session.Id);
+            name: name,
+            description: description,
+            roomId: roomId ?? Constants.Room.Id,
+            trainerId: trainerId ?? Constants.Trainer.Id,
+            maxParticipants: maxParticipants,
+            date: date ?? Constants.Session.Date,
+            time:time ?? Constants.Session.Time,
+            categories: categories ?? Constants.Session.Categories,
+            id: id ?? Constants.Session.Id
+            );
     }
 }

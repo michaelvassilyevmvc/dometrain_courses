@@ -7,21 +7,21 @@ namespace DomeGym.Application.Participants.Commands.CancelReservation;
 
 public class CancelReservationCommandHandler : IRequestHandler<CancelReservationCommand, ErrorOr<Deleted>>
 {
-    private readonly ISessionRepository _sessionRepository;
+    private readonly ISessionsRepository _sessionsRepository;
     private readonly IParticipantsRepository _participantsRepository;
     private readonly IDateTimeProvider _dateTimeProvider;
 
-    public CancelReservationCommandHandler(ISessionRepository sessionRepository,
+    public CancelReservationCommandHandler(ISessionsRepository sessionsRepository,
         IParticipantsRepository participantsRepository, IDateTimeProvider dateTimeProvider)
     {
-        _sessionRepository = sessionRepository;
+        _sessionsRepository = sessionsRepository;
         _participantsRepository = participantsRepository;
         _dateTimeProvider = dateTimeProvider;
     }
 
     public async Task<ErrorOr<Deleted>> Handle(CancelReservationCommand command, CancellationToken cancellationToken)
     {
-        var session = await _sessionRepository.GetByIdAsync(command.SessionId);
+        var session = await _sessionsRepository.GetByIdAsync(command.SessionId);
         if (session is null)
         {
             return Error.NotFound("User doesn't have a reservation for the given session");
@@ -50,7 +50,7 @@ public class CancelReservationCommandHandler : IRequestHandler<CancelReservation
             return cancelReservationResult.Errors;
         }
 
-        await _sessionRepository.UpdateAsync(session);
+        await _sessionsRepository.UpdateAsync(session);
         return Result.Deleted;
     }
 }

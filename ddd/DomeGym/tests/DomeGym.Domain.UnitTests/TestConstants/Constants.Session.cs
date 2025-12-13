@@ -1,4 +1,5 @@
 ﻿using DomeGym.Domain.Common.ValueObjects;
+using DomeGym.Domain.SessionAggregate;
 using FluentAssertions.Primitives;
 
 namespace DomeGym.Domain.UnitTests.TestConstants;
@@ -14,6 +15,10 @@ public static partial class Constants
             start: TimeOnly.MinValue.AddHours(8),
             end: TimeOnly.MinValue.AddHours(9)
         );
+
+        public static readonly List<SessionCategory> Categories = new();
         public const int MaxParticipants = 10;
+        public const string Name = "Zoomba Session";
+        public const string Description = "The best zoomba yay";
     }
 }

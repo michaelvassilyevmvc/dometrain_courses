@@ -9,16 +9,16 @@ public class ListSessionsQueryHandler : IRequestHandler<ListSessionsQuery, Error
 {
     private readonly ISubscriptionsRepository _subscriptionsRepository;
     private readonly IGymsRepository _gymsRepository;
-    private readonly ISessionRepository _sessionRepository;
+    private readonly ISessionsRepository _sessionsRepository;
 
     public ListSessionsQueryHandler(
         ISubscriptionsRepository subscriptionsRepository,
         IGymsRepository gymsRepository,
-        ISessionRepository sessionRepository)
+        ISessionsRepository sessionsRepository)
     {
         _subscriptionsRepository = subscriptionsRepository;
         _gymsRepository = gymsRepository;
-        _sessionRepository = sessionRepository;
+        _sessionsRepository = sessionsRepository;
     }
 
     public async Task<ErrorOr<List<Session>>> Handle(ListSessionsQuery query, CancellationToken cancellationToken)
@@ -35,7 +35,7 @@ public class ListSessionsQueryHandler : IRequestHandler<ListSessionsQuery, Error
             return Error.NotFound("Gym not found");
         }
 
-        return await _sessionRepository.ListByGymIdAsync(
+        return await _sessionsRepository.ListByGymIdAsync(
             query.GymId,
             query.StartDateTime, query.EndDateTime,
             query.Categories);

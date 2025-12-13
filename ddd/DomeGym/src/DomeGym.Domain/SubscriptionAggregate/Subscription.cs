@@ -9,7 +9,7 @@ public class Subscription: AggregateRoot
     private readonly List<Guid> _gymIds = new();
     private readonly int _maxGyms;
     private readonly Guid _adminId;
-    private SubscriptionType SubscriptionType { get; } = default!;
+    public SubscriptionType SubscriptionType { get; } = default!;
 
     public Subscription(
         SubscriptionType subscriptionType,

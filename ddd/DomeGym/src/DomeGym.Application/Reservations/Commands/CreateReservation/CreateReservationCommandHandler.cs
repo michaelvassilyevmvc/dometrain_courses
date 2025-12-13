@@ -6,19 +6,19 @@ namespace DomeGym.Application.Reservations.Commands.CreateReservation;
 
 public class CreateReservationCommandHandler : IRequestHandler<CreateReservationCommand, ErrorOr<Success>>
 {
-    private readonly ISessionRepository _sessionRepository;
+    private readonly ISessionsRepository _sessionsRepository;
     private readonly IParticipantsRepository _participantsRepository;
 
-    public CreateReservationCommandHandler(ISessionRepository sessionRepository,
+    public CreateReservationCommandHandler(ISessionsRepository sessionsRepository,
         IParticipantsRepository participantsRepository)
     {
-        _sessionRepository = sessionRepository;
+        _sessionsRepository = sessionsRepository;
         _participantsRepository = participantsRepository;
     }
 
     public async Task<ErrorOr<Success>> Handle(CreateReservationCommand command, CancellationToken cancellationToken)
     {
-        var session = await _sessionRepository.GetByIdAsync(command.SessionId);
+        var session = await _sessionsRepository.GetByIdAsync(command.SessionId);
         if (session is null)
         {
             return Error.NotFound("Session not found");
@@ -51,7 +51,7 @@ public class CreateReservationCommandHandler : IRequestHandler<CreateReservation
             return reserveSpotResult.Errors;
         }
 
-        await _sessionRepository.UpdateAsync(session);
+        await _sessionsRepository.UpdateAsync(session);
         return Result.Success;
     }
 }

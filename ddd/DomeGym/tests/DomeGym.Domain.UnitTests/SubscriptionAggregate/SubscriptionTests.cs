@@ -3,7 +3,7 @@ using DomeGym.Domain.UnitTests.TestUtils.Gyms;
 using DomeGym.Domain.UnitTests.TestUtils.Subscriptions;
 using FluentAssertions;
 
-namespace DomeGym.Domain.UnitTests;
+namespace DomeGym.Domain.UnitTests.SubscriptionAggregate;
 
 public class SubscriptionTests
 {

@@ -4,9 +4,8 @@ using DomeGym.Domain.UnitTests.TestUtils.Participants;
 using DomeGym.Domain.UnitTests.TestUtils.Services;
 using DomeGym.Domain.UnitTests.TestUtils.Sessions;
 using FluentAssertions;
-using ErrorOr;
 
-namespace DomeGym.Domain.UnitTests;
+namespace DomeGym.Domain.UnitTests.SessionAggregate;
 
 // - Сеанс не может содержать больше максимального количества участников.
 // - Бронирование не может быть отменено бесплатно менее чем за 24 часа до начала сеанса.
@@ -52,9 +51,7 @@ public class SessionTest
             time: Constants.Session.Time);
         
         // Create a participant
-        var participant = ParticipantFactory.CreateParticipant(
-            id: Guid.NewGuid(),
-            userId: Guid.NewGuid());
+        var participant = ParticipantFactory.CreateParticipant();
         
         var cancellationDateTime = Constants.Session.Date.ToDateTime(TimeOnly.MinValue);
         

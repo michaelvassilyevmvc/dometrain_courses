@@ -2,7 +2,7 @@
 
 namespace DomeGym.Application.Common.Interfaces;
 
-public interface ISessionRepository
+public interface ISessionsRepository
 {
     Task AddSessionAsync(Session session);
     Task<Session?> GetByIdAsync(Guid id);
@@ -22,6 +22,6 @@ public interface ISessionRepository
     );
 
     Task UpdateAsync(Session session);
-    Task<List<Session>> ListByRoomIdAsync();
+    Task<List<Session>> ListByRoomIdAsync(Guid roomId);
     Task RemoveRangeAsync(List<Session> sessions);
 }

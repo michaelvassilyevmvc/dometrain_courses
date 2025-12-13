@@ -10,7 +10,7 @@ public class Session : AggregateRoot
 {
     private readonly List<Reservation> _reservations = new();
     private readonly List<SessionCategory> _categories = new();
-    public int NumPraticipants => _reservations.Count;
+    public int NumParticipants => _reservations.Count;
     public DateOnly Date { get; }
     public TimeRange Time { get; }
     public string Name { get; } = null!;

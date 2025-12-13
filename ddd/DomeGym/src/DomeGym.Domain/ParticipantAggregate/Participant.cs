@@ -10,7 +10,7 @@ public class Participant : AggregateRoot
 {
     private readonly Schedule _schedule = Schedule.Empty();
     private readonly List<Guid> _sessionId = new();
-    private Guid UserId { get; }
+    public Guid UserId { get; }
     public IReadOnlyList<Guid> SessionIds => _sessionId;
 
 

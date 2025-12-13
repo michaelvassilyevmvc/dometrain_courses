@@ -7,7 +7,7 @@ namespace DomeGym.Domain.AdminAggregate;
 
 public class Admin : AggregateRoot
 {
-    private Guid UserId { get; }
+    public Guid UserId { get; }
     public Guid? SubscriptionId { get; private set; }
     
     public Admin(

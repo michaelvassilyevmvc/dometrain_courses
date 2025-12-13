@@ -7,13 +7,13 @@ namespace DomeGym.Application.Participants.Queries.ListParticipantSessions;
 
 public class ListParticipantSessionsQueryHandler : IRequestHandler<ListParticipantSessionsQuery, ErrorOr<List<Session>>>
 {
-    private readonly ISessionRepository _sessionRepository;
+    private readonly ISessionsRepository _sessionsRepository;
     private readonly IParticipantsRepository _participantsRepository;
 
-    public ListParticipantSessionsQueryHandler(ISessionRepository sessionRepository,
+    public ListParticipantSessionsQueryHandler(ISessionsRepository sessionsRepository,
         IParticipantsRepository participantsRepository)
     {
-        _sessionRepository = sessionRepository;
+        _sessionsRepository = sessionsRepository;
         _participantsRepository = participantsRepository;
     }
 
@@ -26,7 +26,7 @@ public class ListParticipantSessionsQueryHandler : IRequestHandler<ListParticipa
             return Error.NotFound("Participant not found");
         }
 
-        return await _sessionRepository.ListByIdsAsync(participant.SessionIds, startDateTime: query.StartDateTime,
+        return await _sessionsRepository.ListByIdsAsync(participant.SessionIds, startDateTime: query.StartDateTime,
             endDateTime: query.EndDateTime);
     }
 }

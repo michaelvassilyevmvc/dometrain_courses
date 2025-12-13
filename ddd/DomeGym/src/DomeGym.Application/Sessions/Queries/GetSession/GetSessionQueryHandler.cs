@@ -7,12 +7,12 @@ namespace DomeGym.Application.Sessions.Queries.GetSession;
 
 public class GetSessionQueryHandler:IRequestHandler<GetSessionQuery, ErrorOr<Session>>
 {
-    private readonly ISessionRepository _sessionRepository;
+    private readonly ISessionsRepository _sessionsRepository;
     private readonly IRoomsRepository _roomsRepository;
 
-    public GetSessionQueryHandler(ISessionRepository sessionRepository, IRoomsRepository roomsRepository)
+    public GetSessionQueryHandler(ISessionsRepository sessionsRepository, IRoomsRepository roomsRepository)
     {
-        _sessionRepository = sessionRepository;
+        _sessionsRepository = sessionsRepository;
         _roomsRepository = roomsRepository;
     }
 
@@ -30,7 +30,7 @@ public class GetSessionQueryHandler:IRequestHandler<GetSessionQuery, ErrorOr<Ses
             return Error.NotFound("Session not found");
         }
 
-        var session = await _sessionRepository.GetByIdAsync(query.SessionId);
+        var session = await _sessionsRepository.GetByIdAsync(query.SessionId);
         if (session is null)
         {
             return Error.NotFound("Session not found");
